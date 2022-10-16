@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "itsclassified/livewire-socialite-pwa",
+    "description": "Package used for integrating Socialite inside Livewire for the use of an PWA",
     "keywords": [
-        ":vendor_name",
+        "ItsClassified",
         "laravel",
-        ":package_slug"
+        "livewire-socialite-pwa"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/itsclassified/livewire-socialite-pwa",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Kars Miesen",
+            "email": "karsmiesen@ziggo.nl",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "ItsClassified\\LivewireSocialitePwa\\": "src",
+            "ItsClassified\\LivewireSocialitePwa\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "ItsClassified\\LivewireSocialitePwa\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +61,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "ItsClassified\\LivewireSocialitePwa\\LivewireSocialitePwaServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LivewireSocialitePwa": "ItsClassified\\LivewireSocialitePwa\\Facades\\LivewireSocialitePwa"
             }
         }
     },

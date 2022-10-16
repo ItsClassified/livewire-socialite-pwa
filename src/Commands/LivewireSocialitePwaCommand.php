@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace ItsClassified\LivewireSocialitePwa\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LivewireSocialitePwaCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'livewire-socialite-pwa';
 
     public $description = 'My command';
 
