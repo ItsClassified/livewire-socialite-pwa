@@ -23,7 +23,7 @@ class LivewireSocialitePwaServiceProvider extends PackageServiceProvider
             ->hasViewComponents('livewire-socialite-google', \ItsClassified\LivewireSocialitePwa\Components\Google\Button::class)
             ->hasViewComponents('livewire-socialite-apple', \ItsClassified\LivewireSocialitePwa\Components\Apple\Import::class)
             ->hasViewComponents('livewire-socialite-apple', \ItsClassified\LivewireSocialitePwa\Components\Apple\Button::class)
-            ->hasMigration('create_livewire-socialite-pwa_table')
+            ->hasMigration('create_livewire_socialite_pwa_table')
             ->hasCommand(LivewireSocialitePwaCommand::class);
     }
 }
