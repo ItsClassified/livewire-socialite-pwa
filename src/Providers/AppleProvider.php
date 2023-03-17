@@ -69,12 +69,11 @@ class AppleProvider
                     'password' => bcrypt(\Str::random(16)),
                     'email_verified_at' => $token['email_verified']? now() : null,
                 ]);
-                ray($providerUser);
 
                 // Create the socilaite credential
                 $createdUser->socialiteCredentials()->create([
                     'provider_id' => $token['sub'],
-                    'provider_name' => SocialiteProviders::GOOGLE,
+                    'provider_name' => SocialiteProviders::APPLE,
                     'email' => $token['email'],
                     'email_verified' => $token['email_verified']? 1 : 0,
                     'access_token' => $providerUser['access_token'],
