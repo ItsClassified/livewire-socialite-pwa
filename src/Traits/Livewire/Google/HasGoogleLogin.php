@@ -16,7 +16,7 @@ trait HasGoogleLogin
         $this->listeners['loginWithGoogleValidated'] = 'loginWithGoogleValidated';
     }
 
-    public function loginWithGoogleOnSuccess($data)
+    public function loginWithGoogleOnSuccess($data = null)
     {
         try {
             $jwt = new \Firebase\JWT\JWT;
@@ -40,14 +40,14 @@ trait HasGoogleLogin
 
 
             } else {
-                $this->emit('loginWithGoogleFailed', [
+                $this->dispatch('loginWithGoogleFailed', data: [
                     'status' => 'error',
                     'message' => 'Invalid token',
                 ]);
                 return;
             }
         } catch (\Exception $e) {
-            $this->emit('loginWithGoogleFailed', [
+            $this->dispatch('loginWithGoogleFailed', data: [
                 'status' => 'error',
                 'message' => 'Invalid token',
             ]);
@@ -61,7 +61,7 @@ trait HasGoogleLogin
 
         if ($googleIdExists) {
             auth()->login($googleIdExists);
-            $this->emit('loginWithGoogleSuccess', [
+            $this->dispatch('loginWithGoogleSuccess', data: [
                 'status' => 'success',
                 'message' => 'User authenticated and logged in!',
             ]);
@@ -80,14 +80,14 @@ trait HasGoogleLogin
             if ($socialiteExists) {
                 auth()->login($emailExists);
                 // Login the user
-                $this->emit('loginWithGoogleSuccess', [
+                $this->dispatch('loginWithGoogleSuccess', data: [
                     'status' => 'success',
                     'message' => 'User authenticated and logged in!',
                 ]);
                 auth()->login($emailExists);
                 return;
             } else {
-                $this->emit('loginWithGoogleFailed', [
+                $this->dispatch('loginWithGoogleFailed', data: [
                     'status' => 'failed',
                     'message' => 'Email already in use.',
                 ]);
@@ -95,7 +95,7 @@ trait HasGoogleLogin
             }
         }
 
-        $this->emit('loginWithGoogleValidated', [
+        $this->dispatch('loginWithGoogleValidated', data: [
             'status' => 'validated',
             'message' => 'User is validated and can be send to the next page to create a username!',
         ]);

@@ -4,6 +4,6 @@
 </div>
 <script>
     function GoogleSignInHandle(response) {
-        window.livewire.emit('loginWithGoogleOnSuccess', response);
+        Livewire.dispatch('loginWithGoogleOnSuccess', [response]);
     }
 </script>

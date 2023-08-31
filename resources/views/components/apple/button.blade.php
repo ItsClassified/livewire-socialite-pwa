@@ -22,6 +22,6 @@
 <script>
     // Listen for authorization success.
     document.addEventListener('AppleIDSignInOnSuccess', (event) => {
-        window.livewire.emit('loginWithAppleOnSuccess', event.detail);
+        Livewire.emit('loginWithAppleOnSuccess', [event.detail]);
     });
 </script>

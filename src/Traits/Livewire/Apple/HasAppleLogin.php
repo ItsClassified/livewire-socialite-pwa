@@ -50,8 +50,7 @@ trait HasAppleLogin
 
             session()->put('provider_type', SocialiteProviders::APPLE->value);
         } catch (\Exception $e) {
-            ray($e->getMessage());
-            $this->emit('loginWithAppleFailed', [
+            $this->dispatch('loginWithAppleFailed', data: [
                 'status' => 'error',
                 'message' => 'Invalid token',
             ]);
@@ -69,7 +68,7 @@ trait HasAppleLogin
 
         if ($appleIdExists) {
             auth()->login($appleIdExists);
-            $this->emit('loginWithAppleSuccess', [
+            $this->dispatch('loginWithAppleSuccess', data: [
                 'status' => 'success',
                 'message' => 'User is authenticated and logged in!',
             ]);
@@ -89,13 +88,13 @@ trait HasAppleLogin
                 // Login the user
                 auth()->login($emailExists);
 
-                $this->emit('loginWithAppleSuccess', [
+                $this->dispatch('loginWithAppleSuccess', data: [
                     'status' => 'success',
                     'message' => 'User is authenticated and logged in!',
                 ]);
                 return;
             } else {
-                $this->emit('loginWithAppleFailed', [
+                $this->dispatch('loginWithAppleFailed', data: [
                     'status' => 'failed',
                     'message' => 'Email is already in use!',
                 ]);
@@ -103,7 +102,7 @@ trait HasAppleLogin
             }
         }
 
-        $this->emit('loginWithAppleValidated', [
+        $this->dispatch('loginWithAppleValidated', data: [
             'status' => 'validated',
             'message' => 'User is validated and can be send to create a username!',
         ]);
